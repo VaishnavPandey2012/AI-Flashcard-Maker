@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/* ===================== Custom Theme ===================== */
+@theme {
+  --color-violet-50: #f5f3ff;
+  --color-violet-100: #ede9fe;
+  --color-violet-200: #ddd6fe;
+  --color-violet-300: #c4b5fd;
+  --color-violet-400: #a78bfa;
+  --color-violet-500: #8b5cf6;
+  --color-violet-600: #7c3aed;
+  --color-violet-700: #6d28d9;
+  --color-violet-800: #5b21b6;
+  --color-violet-900: #4c1d95;
+
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+
+  --color-pink-400: #f472b6;
+  --color-pink-500: #ec4899;
+
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ===================== Base Reset ===================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===================== App Backgrounds ===================== */
+.app-dark {
+  background: linear-gradient(135deg, #0F0A1E 0%, #1A0F3C 50%, #0D1B35 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+.app-light {
+  background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FF 50%, #E0E7FF 100%);
+  min-height: 100vh;
+  color: #1e1b4b;
+}
+
+/* ===================== Glassmorphism ===================== */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.app-light .glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+}
+
+.app-light .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  box-shadow: 0 4px 24px rgba(124, 58, 237, 0.06);
+}
+
+/* ===================== Card background ===================== */
+.bg-card {
+  background: rgba(15, 10, 40, 0.85);
+}
+
+.app-light .bg-card {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ===================== 3D Flashcard ===================== */
+.flashcard-container {
+  width: 100%;
+  min-height: 280px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+}
+
+.flashcard-face {
+  width: 100%;
+  min-height: 280px;
+  background: rgba(15, 10, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.app-light .flashcard-face {
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1), 0 0 0 1px rgba(124, 58, 237, 0.1);
+}
+
+.flashcard-container:hover .flashcard-face {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(124, 58, 237, 0.2);
+}
+
+/* ===================== Gradient Text ===================== */
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===================== Background Orbs ===================== */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  top: -150px;
+  left: -100px;
+  animation: floatOrb 12s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+  top: 100px;
+  right: -100px;
+  animation: floatOrb 15s ease-in-out infinite reverse;
+  opacity: 0.2;
+}
+
+.orb-3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+  bottom: 0;
+  left: 40%;
+  animation: floatOrb 10s ease-in-out infinite 3s;
+  opacity: 0.15;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* ===================== Custom Scrollbar ===================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}
+
+/* ===================== Light mode text overrides ===================== */
+.app-light .text-white {
+  color: #1e1b4b;
+}
+
+.app-light .text-white\/80 {
+  color: rgba(30, 27, 75, 0.8);
+}
+
+.app-light .text-white\/70 {
+  color: rgba(30, 27, 75, 0.7);
+}
+
+.app-light .text-white\/60 {
+  color: rgba(30, 27, 75, 0.6);
+}
+
+.app-light .text-white\/50 {
+  color: rgba(30, 27, 75, 0.5);
+}
+
+.app-light .text-white\/40 {
+  color: rgba(30, 27, 75, 0.4);
+}
+
+.app-light .text-white\/30 {
+  color: rgba(30, 27, 75, 0.3);
+}
+
+/* ===================== Animations ===================== */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.6); }
+}
+
+.animate-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ===================== Hover glow for cards ===================== */
+.flashcard-container:hover {
+  filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.25));
+}
+
+/* ===================== Focus styles ===================== */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
