@@ -15,7 +15,7 @@ interface CreatePageProps {
 }
 
 function generateId(): string {
-  return Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+  return Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
 }
 
 export const CreatePage: React.FC<CreatePageProps> = ({ decks, onSaveDeck, onStudy }) => {

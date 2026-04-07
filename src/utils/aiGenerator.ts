@@ -1,7 +1,7 @@
 import type { Flashcard, CardType, Difficulty, MCQOption } from '../types/flashcard';
 
 function generateId(): string {
-  return Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+  return Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
 }
 
 function assignDifficulty(index: number, total: number): Difficulty {
@@ -85,7 +85,7 @@ function parseTextToQAPairs(text: string): Array<{ q: string; a: string }> {
       const parts = def.match(/^(.+?)\s+(?:is|are|was|were|refers to|defined as|means)\s+(.+)$/i);
       if (parts) {
         pairs.push({
-          q: `What ${parts[1].trim().toLowerCase().startsWith('the') ? 'is' : 'is'} ${parts[1].trim()}?`,
+          q: `What ${parts[1].trim().toLowerCase().startsWith('the') ? 'is' : 'are'} ${parts[1].trim()}?`,
           a: parts[2].trim(),
         });
       }
